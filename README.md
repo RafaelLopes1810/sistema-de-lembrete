@@ -78,7 +78,7 @@ Estrutura de pastas:
 
 ## 🛠️ Decisões de Projeto
 
-- Toda a nomenclatura do **backend** foi feita em **português** para maior clareza e entendimento.
+- Toda a nomenclatura do **backend** e **frontend** foi feita em **português** para maior clareza e entendimento.
 - O projeto segue a separação em **camadas (DTO, Repositório, Controller)** para manter boa organização e facilitar futuras expansões.
 - Uso do **Swagger** no backend para documentação da API.
 - Frontend construído em React para permitir interatividade e escalabilidade.
