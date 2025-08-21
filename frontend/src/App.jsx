@@ -1,25 +1,30 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Modal from "./components/Modal";
-import ListaLembretes from "./components/ListaLembretes";
-
+import ReminderList from "./components/ReminderList";
+import Footer from "./components/Footer";
 function App() {
-  const [lembretes, setLembretes] = useState([]);
+  const [reminders, setReminders] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const addLembrete = (lembrete) => {
-    setLembretes([...lembretes, lembrete]);
+  const addReminder = (reminder) => {
+    setReminders([...reminders, reminder]);
     setIsModalOpen(false);
   };
 
   return (
-    <div>
+    <div className="app">
       <Navbar onOpenModal={() => setIsModalOpen(true)} />
-      <div className="container">
-        <ListaLembretes lembretes={lembretes} />
-      </div>
 
-      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} onCreate={addLembrete} />}
+      <main className="container">
+        <ReminderList reminders={reminders} />
+      </main>
+
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)} onCreate={addReminder} />
+      )}
+
+      <Footer />
     </div>
   );
 }
