@@ -136,7 +136,7 @@ dotnet ef database update
 Isso criará automaticamente o banco LembretesDb no SQL Server Express com as tabelas necessárias (nome de acordo com a string de conexão no arquivo backend/appsettings.json).
 
 ### 4. Rodar o Backend
-No diretório backend (cd backend):
+No diretório backend `(cd backend)`:
 ```
 dotnet run
 ```
@@ -144,7 +144,7 @@ dotnet run
 A API iniciará em http://localhost:5157, a documentação Swagger estará em http://localhost:5157/swagger.
 
 ### 5. Rodar o Frontend
-No diretório frontend (cd frontend):
+No diretório frontend `(cd frontend)`:
 
 ```
 npm install
