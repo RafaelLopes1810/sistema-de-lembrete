@@ -27,33 +27,38 @@ sistema-de-lembrete/
 │ ├── appsettings.json
 │ └── backend.csproj
 │
+├── docs/
+| ├── testesBackend.png
+| └── testesFrontend.png
+|
 ├── frontend/
+│ ├── __mocks__/
+│ │ └── fileMock.js
+│ ├── __tests__/
+│ │ ├── App.test.jsx
+│ │ ├── Footer.test.jsx
+│ │ ├── ListaLembretes.test.jsx
+│ │ ├── Modal.test.jsx
+│ │ └── Navbar.test.jsx
+│ ├── node_modules/
 │ ├── public/
 │ ├── src/
-│ │ ├── components/
-│ │ │ ├── Footer.jsx
-│ │ │ ├── Modal.jsx
-│ │ │ ├── Navbar.jsx
-│ │ │ └── ReminderList.jsx
-│ │ ├── imgs/
-│ │ │ ├── mais.png
-│ │ │ └── sino.png
-│ │ ├── App.jsx
-│ │ ├── index.scss
-│ │ └── main.jsx
+│ ├── .gitignore
+│ ├── babel.config.js
+│ ├── eslint.config.js
 │ ├── index.html
-| ├── README.md
-| ├── package.json
-| ├── vite.config.js
-| └── .gitignore
+│ ├── jest.config.js
+│ ├── package-lock.json
+│ ├── package.json
+│ └── vite.config.js
 │
 ├── tests/
-| ├── backend/Backend.Tests
-| | ├── Backend.Tests.csproj
-| | ├── LembreteControllerTests.cs
-| | ├── LembreteRepositoryTests.cs
-| | └── LembreteTests.cs
-│ ├── frontend/
+| └── backend/Backend.Tests
+|   ├── Backend.Tests.csproj
+|   ├── LembreteControllerTests.cs
+|   ├── LembreteRepositoryTests.cs
+|   └── LembreteTests.cs
+│
 └── README.md # Documentação do projeto
 ```
 
@@ -106,8 +111,20 @@ Estrutura de pastas:
   cd tests/backend/Backend.Tests
   dotnet test
   ```
+  ![Teste backend rodando no terminal](docs/testesBackend.png)
 
 ### Frontend
+- Os testes do **frontend** foram implementados utilizando o **Jest** em conjunto com a **React Testing Library**.
+- Todos os testes estão localizados em `frontend/__tests__/`.
+- Foram criados testes para:
+  - **Componentes**: verificação da renderização correta (ex.: `Footer`, `App`), presença de elementos esperados no DOM e interações básicas.
+  - **Integração simples**: simulação de chamadas assíncronas com `fetch` mockado, garantindo que os componentes lidem corretamente com os dados carregados.
+- Os testes podem ser executados com:
+  ```bash
+  cd tests/frontend
+  npm test
+  ```
+   ![Teste frontend rodando no terminal](docs/testesFrontend.png)
 
 ## ▶️ Instruções de Execução
 
