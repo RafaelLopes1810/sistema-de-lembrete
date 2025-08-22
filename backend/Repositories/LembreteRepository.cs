@@ -29,9 +29,8 @@ namespace backend.Repositories
         {
             var hoje = DateTime.Today;
             return await _context.Lembretes
-                .Where(l => l.Data.Date >= hoje)
+                .Where(l => l.Data >= hoje)
                 .OrderBy(l => l.Data)
-                .ThenBy(l => l.Titulo ?? string.Empty)
                 .ToListAsync();
         }
 
@@ -47,6 +46,11 @@ namespace backend.Repositories
             _context.Lembretes.Remove(existente);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<Lembrete>> ObterTodos()
+        {
+            return await _context.Lembretes.ToListAsync();
         }
     }
 }

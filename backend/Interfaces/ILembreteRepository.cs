@@ -8,6 +8,7 @@ namespace backend.Interfaces
     {
         Task<Lembrete> Adicionar(Lembrete lembrete);
         Task<IEnumerable<Lembrete>> ObterFuturos();
+        Task<IEnumerable<Lembrete>> ObterTodos();
         Task<Lembrete?> ObterPorId(int id);
         Task<bool> Remover(int id);
     }

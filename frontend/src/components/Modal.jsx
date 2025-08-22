@@ -4,12 +4,37 @@ function Modal({ onClose, onCreate }) {
   const [titulo, setTitulo] = useState("");
   const [data, setData] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!titulo || !data) return;
-    onCreate({ titulo, data });
-    setTitulo("");
-    setData("");
+
+    const novoLembrete = { titulo, data };
+
+    try {
+      const response = await fetch("http://localhost:5157/api/lembrete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(novoLembrete),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao salvar no servidor");
+      }
+
+      const savedReminder = await response.json();
+      
+      // Atualiza a lista no frontend
+      onCreate(savedReminder);
+
+      // Limpa os campos
+      setTitulo("");
+      setData("");
+      onClose();
+    } catch (error) {
+      console.error("Erro:", error);
+    }
   };
 
   return (

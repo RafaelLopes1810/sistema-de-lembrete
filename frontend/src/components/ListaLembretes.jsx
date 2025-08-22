@@ -1,7 +1,6 @@
 import React from "react";
 
-function ListaLembretes({ lembretes = [], onDelete = () => {} }) {
-
+function ListaLembretes({ lembretes = [], onDelete = () => { } }) {
   if (!lembretes.length) {
     return (
       <div className="lista-lembrete">
@@ -12,15 +11,18 @@ function ListaLembretes({ lembretes = [], onDelete = () => {} }) {
   }
 
   const grupo = lembretes.reduce((acc, r) => {
-    acc[r.date] = acc[r.date] || [];
-    acc[r.date].push(r);
+    acc[r.data] = acc[r.data] || [];
+    acc[r.data].push(r);
     return acc;
   }, {});
 
   const datasEmOrdem = Object.keys(grupo).sort();
 
   const formatDate = (iso) => {
-    const [y, m, d] = iso.split("-");
+    const date = new Date(iso);
+    const d = String(date.getDate()).padStart(2, "0");
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const y = date.getFullYear();
     return `DIA ${d}/${m}/${y}`;
   };
 
@@ -37,8 +39,7 @@ function ListaLembretes({ lembretes = [], onDelete = () => {} }) {
               <div className="lembrete-esquerda">
                 <span className="lembrete-topico">•</span>
                 <div className="textos-lembrete">
-                  <strong className="titulo-lembrete">{rem.title}</strong>
-                  {rem.desc && <p className="desc-lembrete">{rem.desc}</p>}
+                  <strong className="titulo-lembrete">{rem.titulo}</strong>
                 </div>
               </div>
 
@@ -46,7 +47,7 @@ function ListaLembretes({ lembretes = [], onDelete = () => {} }) {
                 className="btn-deletar"
                 aria-label="Excluir lembrete"
                 title="Excluir"
-                onClick={() => onDelete(date, i)}
+                onClick={() => onDelete(rem.id)}
               >
                 ✕
               </button>
@@ -57,4 +58,5 @@ function ListaLembretes({ lembretes = [], onDelete = () => {} }) {
     </div>
   );
 }
+
 export default ListaLembretes;

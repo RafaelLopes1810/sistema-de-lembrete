@@ -36,6 +36,15 @@ namespace backend.Controllers
             return Ok(item);
         }
 
+        // GET: /api/lembrete/ativos
+        [HttpGet("ativos")]
+        public async Task<ActionResult<IEnumerable<Lembrete>>> GetAtivos()
+        {
+            var lembretes = await _repositorio.ObterFuturos();
+            return Ok(lembretes);
+        }
+
+
         // POST: /api/lembrete
         [HttpPost]
         [ProducesResponseType(typeof(Lembrete), StatusCodes.Status201Created)]
@@ -65,6 +74,24 @@ namespace backend.Controllers
         {
             var ok = await _repositorio.Remover(id);
             if (!ok) return NotFound();
+            return NoContent();
+        }
+
+        // DELETE: /api/lembrete/vencidos
+        [HttpDelete("vencidos")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> RemoverVencidos()
+        {
+            var hoje = DateTime.Today;
+            var lembretes = await _repositorio.ObterTodos();
+
+            var vencidos = lembretes.Where(l => l.Data.Date < hoje).ToList();
+
+            foreach (var l in vencidos)
+            {
+                await _repositorio.Remover(l.Id);
+            }
+
             return NoContent();
         }
     }
