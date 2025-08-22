@@ -39,10 +39,35 @@ function App() {
     init();
   }, []);
 
-  // Adiciona lembrete pelo modal
-  const addLembrete = (lembrete) => {
-    setLembretes([...lembretes, lembrete]);
-    setIsModalOpen(false);
+  // Cria lembrete no backend
+  const criarLembrete = async (lembrete) => {
+    try {
+      const resp = await fetch("http://localhost:5157/api/lembrete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(lembrete),
+      });
+
+      if (resp.ok) {
+        const novo = await resp.json();
+        setLembretes((prev) => [...prev, novo]);
+        setIsModalOpen(false);
+      } else if (resp.status === 400) {
+        const erro = await resp.json();
+
+        if (erro.errors) {
+          const mensagens = Object.values(erro.errors).flat();
+          alert(mensagens.join("\n")); // mostra todas as validações
+        } else {
+          alert("Erro ao criar lembrete.");
+        }
+      } else {
+        alert("Erro inesperado ao criar lembrete.");
+      }
+    } catch (err) {
+      console.error("Erro na requisição POST:", err);
+      alert("Erro de comunicação com o servidor.");
+    }
   };
 
   // Deleta lembrete ao clicar no btn-deletar
@@ -71,7 +96,10 @@ function App() {
       </main>
 
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)} onCreate={addLembrete} />
+        <Modal
+          onClose={() => setIsModalOpen(false)}
+          onCreate={criarLembrete} // agora usa a função com validação
+        />
       )}
 
       <Footer />
