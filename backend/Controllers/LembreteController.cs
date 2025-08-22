@@ -45,7 +45,6 @@ namespace backend.Controllers
             var novo = new Lembrete
             {
                 Titulo = dto.Titulo,
-                Descricao = dto.Descricao,
                 Data = dto.Data
             };
 
