@@ -57,7 +57,7 @@ function App() {
 
         if (erro.errors) {
           const mensagens = Object.values(erro.errors).flat();
-          alert(mensagens.join("\n")); // mostra todas as validações
+          alert(mensagens.join("\n"));
         } else {
           alert("Erro ao criar lembrete.");
         }
@@ -98,7 +98,7 @@ function App() {
       {isModalOpen && (
         <Modal
           onClose={() => setIsModalOpen(false)}
-          onCreate={criarLembrete} // agora usa a função com validação
+          onCreate={criarLembrete}
         />
       )}
 
