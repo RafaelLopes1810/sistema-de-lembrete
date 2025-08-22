@@ -71,7 +71,7 @@ sistema-de-lembrete/
   - Listar lembretes
   - Excluir lembrete
 
-### **Backend (.NET 9 API - pasta `backend`)**
+### **Backend (.NET 9 API)**
 Estrutura de pastas:
 - `/Models` → Modelos das entidades (`Lembrete.cs`).
 - `/DTOs` → Objetos de transferência de dados (`CriarLembreteDto.cs`).
@@ -117,7 +117,7 @@ Estrutura de pastas:
 - Os testes do **frontend** foram implementados utilizando o **Jest** em conjunto com a **React Testing Library**.
 - Todos os testes estão localizados em `frontend/__tests__/`.
 - Foram criados testes para:
-  - **Componentes**: verificação da renderização correta (ex.: `Footer`, `App`), presença de elementos esperados no DOM e interações básicas.
+  - **Componentes**: verificação da renderização correta de todos os **components** (ex.: `Navbar`, `App`), presença de elementos esperados no DOM e interações básicas.
   - **Integração simples**: simulação de chamadas assíncronas com `fetch` mockado, garantindo que os componentes lidem corretamente com os dados carregados.
 - Os testes podem ser executados com:
   ```bash
@@ -196,6 +196,10 @@ npm run dev
 
 O frontend iniciará em http://localhost:5173/.
 
----
-
 ✅ Assim você poderá acessar a aplicação completa, com o frontend React consumindo a API do backend em .NET 9 conectada ao SQL Server Express.
+
+## 🖼️ Prints do Sistema
+
+![Print1 do sistema](docs/print1.png)
+![Print2 do sistema](docs/print2.png)
+![Print3 do sistema](docs/print3.png)
