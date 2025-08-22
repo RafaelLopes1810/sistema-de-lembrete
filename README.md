@@ -39,7 +39,7 @@ sistema-de-lembrete/
 │ │ │ ├── mais.png
 │ │ │ └── sino.png
 │ │ ├── App.jsx
-│ │ ├── index.css
+│ │ ├── index.scss
 │ │ └── main.jsx
 │ ├── index.html
 | ├── README.md
@@ -52,7 +52,7 @@ sistema-de-lembrete/
 
 ### **Frontend (React)**
 - Construído em React com componentes funcionais.
-- Estilo aplicado com CSS.
+- Estilo aplicado com SCSS para uso de pré-processador de CSS (Sass).
 - Comunicação com a API backend via chamadas HTTP (fetch/axios).
 - Funcionalidades principais:
   - Criar lembrete
@@ -81,7 +81,8 @@ Estrutura de pastas:
 - Toda a nomenclatura do **backend** e **frontend** foi feita em **português** para maior clareza e entendimento.
 - O projeto segue a separação em **camadas (DTO, Repositório, Controller)** para manter boa organização e facilitar futuras expansões.
 - Uso do **Swagger** no backend para documentação da API.
-- Frontend construído em React para permitir interatividade e escalabilidade.
+- Frontend construído em **React** para permitir interatividade e escalabilidade.
+- O **SCSS** foi utilizado no frontend para melhorar a organização e manutenção do código de estilo. 
 
 ## ▶️ Instruções de Execução
 
@@ -122,7 +123,7 @@ winget install OpenJS.NodeJS
 ```
 
 - SQL Server Express
-Escolha a opção mais à esquerda "SQL Server 2022 Express". Durante a instalação, escolha a edição Express e habilite o serviço SQLEXPRESS.
+Escolha a opção "SQL Server 2022 Express". Durante a instalação, escolha a edição Express e habilite o serviço SQLEXPRESS.
 ```
 https://www.microsoft.com/pt-br/sql-server/sql-server-downloads
 ```
@@ -148,9 +149,9 @@ No diretório frontend `(cd frontend)`:
 
 ```
 npm install
-npm start
+npm run dev
 ```
 
-O frontend iniciará em http://localhost:3000.
+O frontend iniciará em http://localhost:5173/.
 
 ✅ Assim você poderá acessar a aplicação completa, com o frontend React consumindo a API do backend em .NET 9 conectada ao SQL Server Express.
